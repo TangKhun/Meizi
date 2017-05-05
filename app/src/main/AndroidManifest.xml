@@ -25,8 +25,9 @@
             android:name=".activity.PictureShowActivity"
             android:theme="@style/ImageFullscreenTheme"
             />
-        <activity android:name=".activity.GroupImageActivity"/>
-        <activity android:name=".base.BaseActivity"/>
+        <activity android:name=".activity.GroupImageActivity"
+            android:theme="@style/ImageFullscreenTheme"/>
+
     </application>
 
 </manifest>

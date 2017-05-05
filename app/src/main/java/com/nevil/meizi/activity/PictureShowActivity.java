@@ -50,6 +50,7 @@ public class PictureShowActivity extends AppCompatActivity {
                 mPictureDialogProgress.setVisibility(View.GONE);
                 T.showShortToast(PictureShowActivity.this, "大图加载失败，请稍后重试");
                 finish();
+
                 return false;
             }
 

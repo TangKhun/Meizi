@@ -8,6 +8,7 @@ import java.util.List;
  */
 
 public class GankBean implements Serializable {
+
     String error;
     List<GankDataBean> results;
 

@@ -54,5 +54,6 @@ public class TNGouBean {
                 ", total='" + total + '\'' +
                 ", tngou=" + tngou +
                 '}';
+
     }
 }

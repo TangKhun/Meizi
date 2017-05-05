@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         mNavView.setNavigationItemSelectedListener(this);
         initFragment();
+
     }
 
     private void initFragment() {

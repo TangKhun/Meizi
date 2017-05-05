@@ -33,7 +33,7 @@ public class TNGouAdapter extends BaseQuickAdapter<TNGouDataBean, BaseViewHolder
         holder.setOnClickListener(R.id.recycle_image, v -> {
             Intent intent = new Intent(mContext, GroupImageActivity.class);
             // intent.putExtra("path", BaseUrl.TNGOU_IMAGE_ROOT_URL + bean.getImg());
-            intent.putExtra("id", bean.getId());
+            intent.putExtra("ID", bean.getId());
             mContext.startActivity(intent);
         });
     }

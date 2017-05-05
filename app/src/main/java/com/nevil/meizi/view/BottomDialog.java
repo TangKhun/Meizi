@@ -26,6 +26,7 @@ public class BottomDialog extends BottomSheetDialog implements View.OnClickListe
         cancelView = (TextView) rootView.findViewById(R.id.dialog_cancel);
         setContentView(rootView);
         registerListener();
+
     }
 
     private void registerListener() {

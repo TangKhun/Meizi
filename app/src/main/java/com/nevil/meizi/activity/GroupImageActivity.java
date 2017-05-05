@@ -1,9 +1,12 @@
 package com.nevil.meizi.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nevil.meizi.R;
 import com.nevil.meizi.adapter.GroupImageAdapter;
@@ -40,10 +43,18 @@ public class GroupImageActivity extends BaseActivity {
     protected void initView() {
         int id = getIntent().getIntExtra("ID", 0);
         Log.e("MEIZI", "initView: id=" + id);
-        mGroupImageRecycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+        mGroupImageRecycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         mAdapter = new GroupImageAdapter(this, null);
         mGroupImageRecycle.setAdapter(mAdapter);
-        loadData(id);
+
+        new PagerSnapHelper().attachToRecyclerView(mGroupImageRecycle);
+       if (id!=0){
+           loadData(id);
+       }else {
+           Toast.makeText(this, "获取详情失败", Toast.LENGTH_SHORT).show();
+           finish();
+       }
+
     }
 
     private void loadData(int id) {
@@ -55,6 +66,7 @@ public class GroupImageActivity extends BaseActivity {
 
             @Override
             public void onNext(TNGouImageBean bean) {
+                Log.e("MEIZI", "onNext: "+bean.toString() );
                 mAdapter.setNewData(bean.getList());
             }
 
@@ -69,5 +81,6 @@ public class GroupImageActivity extends BaseActivity {
             }
         });
     }
+
 
 }

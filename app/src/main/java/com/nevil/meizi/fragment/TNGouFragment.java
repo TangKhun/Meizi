@@ -20,6 +20,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class TNGouFragment extends BaseListFragment {
+
     @Override
     protected void loadData(int page) {
         NetClient.getInterface(BaseUrl.TNGOU_ROOT_URL).getTNGouList(page, 10).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<TNGouBean>() {

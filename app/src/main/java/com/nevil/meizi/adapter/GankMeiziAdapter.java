@@ -34,6 +34,7 @@ public class GankMeiziAdapter extends BaseQuickAdapter<GankDataBean, BaseViewHol
             Intent intent = new Intent(mContext, PictureShowActivity.class);
             intent.putExtra("path", gankDataBean.getUrl());
             mContext.startActivity(intent);
+
         });
     }
 

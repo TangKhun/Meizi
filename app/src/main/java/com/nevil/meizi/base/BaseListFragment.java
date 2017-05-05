@@ -26,6 +26,8 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
 
     @Override
     protected void initView() {
+        //mSwipeRefreshLayout.measure(0,0);
+        mSwipeRefreshLayout.setRefreshing(true);
         loadData(1);
         mAdapter = setAdapter();
         mSwipeRefreshLayout.setOnRefreshListener(this);

@@ -18,7 +18,6 @@ public class MainFragmentPageAdapter extends FragmentPagerAdapter {
         super(fm);
         this.mFragmentList = fragmentList;
         this.titles = titles;
-
     }
 
     @Override

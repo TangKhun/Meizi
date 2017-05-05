@@ -124,5 +124,6 @@ public class TNGouDataBean {
                 ", time=" + time +
                 ", title='" + title + '\'' +
                 '}';
+
     }
 }

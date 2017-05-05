@@ -31,6 +31,7 @@ public class GankMeiziFragment extends BaseListFragment {
             @Override
             public void onNext(GankBean entity) {
                 if (entity.getError().equals("false")) {
+
                     setData(entity.getResults());
                 } else {
                     loadFail();

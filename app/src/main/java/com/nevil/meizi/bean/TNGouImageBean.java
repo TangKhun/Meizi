@@ -90,5 +90,6 @@ public class TNGouImageBean {
                 ", img='" + img + '\'' +
                 ", list=" + list +
                 '}';
+
     }
 }

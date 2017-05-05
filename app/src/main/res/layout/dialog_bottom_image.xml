@@ -16,6 +16,7 @@
         android:padding="15dp"
         android:text="@string/save_local"/>
 
+
     <TextView
         android:id="@+id/dialog_wallpaper"
         android:layout_width="match_parent"

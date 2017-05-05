@@ -5,7 +5,6 @@ package com.nevil.meizi.bean;
  */
 
 public class GankDataBean {
-
     String _id;
     String createdAt;
     String desc;

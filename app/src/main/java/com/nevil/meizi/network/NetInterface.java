@@ -22,5 +22,6 @@ public interface NetInterface {
 
     @GET(BaseUrl.TNGOU_IMAGE_SHOW)
     Observable<TNGouImageBean> getTNGouImageShow(@Query("id") int id);
+
 }
 

@@ -22,6 +22,7 @@ public class GroupImageAdapter extends BaseQuickAdapter<TNGouImageDataBean, Base
     public GroupImageAdapter(Context context, @Nullable List<TNGouImageDataBean> data) {
         super(R.layout.recycle_item_group_image, data);
         mContext = context;
+
     }
 
     @Override

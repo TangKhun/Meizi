@@ -47,4 +47,5 @@ public class ErrView extends RelativeLayout implements View.OnClickListener {
             mButtonClick.onItemClick();
         }
     }
+
 }
