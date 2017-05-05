@@ -16,7 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.nevil.meizi.adapter.MainFragmentPageAdapter;
-import com.nevil.meizi.fragment.FuliFragment;
+import com.nevil.meizi.fragment.GankMeiziFragment;
+import com.nevil.meizi.fragment.TNGouFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,14 +59,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initFragment() {
-        String[] titles = {"妹子", "汉子", "萌妹子"};
+        String[] titles = {"妹子", "天狗"};
         List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new FuliFragment());
-        fragmentList.add(new FuliFragment());
-        fragmentList.add(new FuliFragment());
+        fragmentList.add(new GankMeiziFragment());
+        fragmentList.add(new TNGouFragment());
         MainFragmentPageAdapter pageAdapter = new MainFragmentPageAdapter(getSupportFragmentManager(), fragmentList, titles);
         mViewPager.setAdapter(pageAdapter);
         mTablayout.setupWithViewPager(mViewPager);
+
     }
 
     @Override
@@ -80,23 +81,16 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

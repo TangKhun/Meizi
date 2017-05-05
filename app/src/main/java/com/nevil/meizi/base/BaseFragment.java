@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nevil.meizi.view.ErrView;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
@@ -20,7 +22,7 @@ public abstract class BaseFragment extends Fragment {
     protected boolean isPrepared;
     protected View view;
     protected Unbinder unbinder;
-    CompositeDisposable mCompositeDisposable = new CompositeDisposable();
+    CompositeDisposable mCompositeDisposable;
 
 
     @Nullable
@@ -36,8 +38,14 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void addDisposable(Disposable disposable) {
+        if (mCompositeDisposable == null)
+            mCompositeDisposable = new CompositeDisposable();
         if (disposable != null)
             mCompositeDisposable.add(disposable);
+    }
+
+    public View getEmptyView() {
+        return new ErrView(getContext());
     }
 
     protected abstract void initView();

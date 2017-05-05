@@ -14,20 +14,33 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Tangkun on 2017/5/4.
  */
 
-public class NetClicent {
-    static GankInterface mGankInterface;
+public class NetClient {
+    static NetInterface mGankNetInterface;
+    static NetInterface mTNGouNetInterface;
+    static NetInterface mInterface;
 
     static Retrofit getRetrofit(String baseUrl) {
         return new Retrofit.Builder().baseUrl(baseUrl).client(getClient()).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
-    public static GankInterface getGankInterface() {
-        if (mGankInterface == null) {
-            mGankInterface = getRetrofit(UrlApi.ROOT_URL).create(GankInterface.class);
-        }
-        return mGankInterface;
+    public static NetInterface getInterface(String baseUrl){
+        return getRetrofit(baseUrl).create(NetInterface.class);
     }
+
+//    public static NetInterface getGankNetInterface() {
+//        if (mGankNetInterface == null) {
+//            mGankNetInterface = getRetrofit(UrlApi.GANK_ROOT_URL).create(NetInterface.class);
+//        }
+//        return mGankNetInterface;
+//    }
+//
+//    public static NetInterface getTNGouNetInterface() {
+//        if (mTNGouNetInterface == null) {
+//            mTNGouNetInterface = getRetrofit(UrlApi.TNGOU_ROOT_URL).create(NetInterface.class);
+//        }
+//        return mTNGouNetInterface;
+//    }
 
     private static OkHttpClient getClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();

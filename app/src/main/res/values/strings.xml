@@ -7,4 +7,11 @@
     <string name="action_settings">Settings</string>
     <string name="err_fail">加载失败\n\n点击空白处刷新</string>
     <string name="err_refresh">刷新</string>
+
+    <string name="title_activity_image">ImageActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="save_local">保存本地</string>
+    <string name="set_wallpaper">设置壁纸</string>
+    <string name="cancel">取消</string>
 </resources>
