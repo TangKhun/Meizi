@@ -5,14 +5,18 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.nevil.meizi.adapter.MainFragmentPageAdapter;
 import com.nevil.meizi.fragment.GankMeiziFragment;
@@ -30,18 +34,15 @@ public class MainActivity extends AppCompatActivity
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.tablayout)
-    TabLayout mTablayout;
-    @BindView(R.id.view_pager)
-    ViewPager mViewPager;
-    //    @BindView(R.id.fab)
-//    FloatingActionButton mFab;
+    @BindView(R.id.main_frame)
+    FrameLayout mframeLayout;
     @BindView(R.id.nav_view)
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
     private long exitTime;
 
+    FragmentManager manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,19 +55,14 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         mNavView.setNavigationItemSelectedListener(this);
+        Log.e("MEIZI", "onCreate: " );
         initFragment();
-
     }
 
     private void initFragment() {
-        String[] titles = {"妹子", "天狗"};
-        List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new GankMeiziFragment());
-        fragmentList.add(new TNGouFragment());
-        MainFragmentPageAdapter pageAdapter = new MainFragmentPageAdapter(getSupportFragmentManager(), fragmentList, titles);
-        mViewPager.setAdapter(pageAdapter);
-        mTablayout.setupWithViewPager(mViewPager);
-
+        manager = getSupportFragmentManager();
+        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame,new TNGouFragment(),"TNGou").commit();
+        manager.executePendingTransactions();
     }
 
     @Override
@@ -76,7 +72,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Snackbar.make(mViewPager, "再按一次退出程序", Snackbar.LENGTH_LONG)
+                Snackbar.make(mDrawerLayout, "再按一次退出程序", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 exitTime = System.currentTimeMillis();
             } else {
@@ -105,19 +101,41 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_clean) {
-        } else if (id == R.id.nav_cancel) {
-            super.onBackPressed();
-        } else if (id == R.id.nav_gank) {
-
-        } else if (id == R.id.nav_tngou) {
-
+        switch (id) {
+            case R.id.nav_sexy_beauty:
+                setClassId(1);
+                break;
+            case R.id.nav_japanese_beauty:
+                setClassId(2);
+                break;
+            case R.id.nav_silk_stockings:
+                setClassId(3);
+                break;
+            case R.id.nav_beauty_photos:
+                setClassId(4);
+                break;
+            case R.id.nav_beauty_portrait:
+                setClassId(5);
+                break;
+            case R.id.nav_pure_beauty:
+                setClassId(6);
+                break;
+            case R.id.nav_sexy_models:
+                setClassId(7);
+                break;
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void setClassId(int classId){
+        try{TNGouFragment fragment = (TNGouFragment) manager.findFragmentByTag("TNGou");
+            if (fragment!=null){
+                fragment.changeClassId(classId);
+            }}catch (Exception e){
+            Log.e("MEIZI", "setClassId: "+e.getMessage() );
+        }
     }
 
 //    @OnClick(R.id.fab)

@@ -1,7 +1,9 @@
 package com.nevil.meizi.base;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.nevil.meizi.R;
@@ -28,6 +30,8 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
     protected void initView() {
         //mSwipeRefreshLayout.measure(0,0);
         mSwipeRefreshLayout.setRefreshing(true);
+//        classId = getArguments().getInt("classId");
+//        Log.e("MEIZI", "initView: " + classId);
         loadData(1);
         mAdapter = setAdapter();
         mSwipeRefreshLayout.setOnRefreshListener(this);
@@ -85,6 +89,10 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
             mAdapter.setNewData(list);
         }
         page++;
+    }
+
+    public void setPage(int page){
+        this.page = page;
     }
 
 }

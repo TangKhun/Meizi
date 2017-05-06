@@ -20,10 +20,11 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class TNGouFragment extends BaseListFragment {
+    int classId = 1;
 
     @Override
     protected void loadData(int page) {
-        NetClient.getInterface(BaseUrl.TNGOU_ROOT_URL).getTNGouList(page, 10).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<TNGouBean>() {
+        NetClient.getInterface(BaseUrl.TNGOU_ROOT_URL).getTNGouList(page, 20, classId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<TNGouBean>() {
             @Override
             public void onSubscribe(Disposable disposable) {
                 addDisposable(disposable);
@@ -48,6 +49,12 @@ public class TNGouFragment extends BaseListFragment {
                 stopRefresh();
             }
         });
+    }
+
+    public void changeClassId(int classId){
+        this.classId = classId;
+        setPage(1);
+        loadData(1);
     }
 
     @Override

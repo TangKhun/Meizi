@@ -18,7 +18,7 @@ public interface NetInterface {
     Observable<GankBean> getGankMeizi(@Path("page") int page);
 
     @GET(BaseUrl.TNGOU_IMAGE_LIST)
-    Observable<TNGouBean> getTNGouList(@Query("page") int page, @Query("rows") int rows);
+    Observable<TNGouBean> getTNGouList(@Query("page") int page, @Query("rows") int rows, @Query("id") int id);
 
     @GET(BaseUrl.TNGOU_IMAGE_SHOW)
     Observable<TNGouImageBean> getTNGouImageShow(@Query("id") int id);

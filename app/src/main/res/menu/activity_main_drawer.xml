@@ -2,28 +2,52 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-
+        <item
+            android:checked="true"
+            android:id="@+id/nav_sexy_beauty"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/sexy_beauty" />
+        <item
+            android:id="@+id/nav_japanese_beauty"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/japanese_beauty" />
+        <item
+            android:id="@+id/nav_silk_stockings"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/silk_stockings" />
+        <item
+            android:id="@+id/nav_beauty_photos"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/beauty_photos" />
+        <item
+            android:id="@+id/nav_beauty_portrait"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/beauty_portrait" />
+        <item
+            android:id="@+id/nav_pure_beauty"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/pure_beauty" />
+        <item
+            android:id="@+id/nav_sexy_models"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/sexy_models" />
         <item
             android:id="@+id/nav_gank"
             android:icon="@drawable/ic_menu_camera"
-            android:title="@string/gank"/>
-        <item
-            android:id="@+id/nav_tngou"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/tngou"/>
+            android:title="@string/gank" />
     </group>
 
-    <item android:title="@string/setting">
-        <menu>
-            <item
-                android:id="@+id/nav_clean"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/clean_cache"/>
-            <item
-                android:id="@+id/nav_cancel"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/cancel_app"/>
-        </menu>
-    </item>
+    <!--<item android:title="@string/setting">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_clean"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="@string/clean_cache" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_cancel"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="@string/cancel_app" />-->
+        <!--</menu>-->
+    <!--</item>-->
 
 </menu>

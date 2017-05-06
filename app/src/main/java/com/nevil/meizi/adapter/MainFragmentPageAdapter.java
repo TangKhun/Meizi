@@ -20,6 +20,13 @@ public class MainFragmentPageAdapter extends FragmentPagerAdapter {
         this.titles = titles;
     }
 
+    public void setNewData(List<Fragment> fragments, String[] titles) {
+        mFragmentList.clear();
+        mFragmentList.addAll(fragments);
+        this.titles = titles;
+        notifyDataSetChanged();
+    }
+
     @Override
     public Fragment getItem(int position) {
         return mFragmentList.get(position);
