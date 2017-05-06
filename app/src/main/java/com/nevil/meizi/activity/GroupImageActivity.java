@@ -5,9 +5,9 @@ import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.nevil.meizi.R;
 import com.nevil.meizi.adapter.GroupImageAdapter;
 import com.nevil.meizi.base.BaseActivity;
@@ -25,12 +25,10 @@ import io.reactivex.schedulers.Schedulers;
  * Created by Tangkun on 2017/5/5.
  */
 
-public class GroupImageActivity extends BaseActivity {
+public class GroupImageActivity extends BaseActivity implements BaseQuickAdapter.OnItemChildClickListener, BaseQuickAdapter.OnItemChildLongClickListener {
 
     @BindView(R.id.group_image)
     RecyclerView mGroupImageRecycle;
-    @BindView(R.id.group_text)
-    TextView mGroupText;
 
     GroupImageAdapter mAdapter;
 
@@ -46,14 +44,15 @@ public class GroupImageActivity extends BaseActivity {
         mGroupImageRecycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         mAdapter = new GroupImageAdapter(this, null);
         mGroupImageRecycle.setAdapter(mAdapter);
-
+        mAdapter.setOnItemChildClickListener(this);
+        mAdapter.setOnItemChildLongClickListener(this);
         new PagerSnapHelper().attachToRecyclerView(mGroupImageRecycle);
-       if (id!=0){
-           loadData(id);
-       }else {
-           Toast.makeText(this, "获取详情失败", Toast.LENGTH_SHORT).show();
-           finish();
-       }
+        if (id != 0) {
+            loadData(id);
+        } else {
+            Toast.makeText(this, "获取详情失败", Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
     }
 
@@ -66,7 +65,7 @@ public class GroupImageActivity extends BaseActivity {
 
             @Override
             public void onNext(TNGouImageBean bean) {
-                Log.e("MEIZI", "onNext: "+bean.toString() );
+                Log.e("MEIZI", "onNext: " + bean.toString());
                 mAdapter.setNewData(bean.getList());
             }
 
@@ -83,4 +82,14 @@ public class GroupImageActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onItemChildClick(BaseQuickAdapter adapter, View view, int i) {
+        finish();
+    }
+
+    @Override
+    public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, int i) {
+        Toast.makeText(this, "position=" + i, Toast.LENGTH_SHORT).show();
+        return false;
+    }
 }

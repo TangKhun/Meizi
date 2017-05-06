@@ -2,8 +2,6 @@ package com.nevil.meizi.activity;
 
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -13,11 +11,11 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.nevil.meizi.R;
+import com.nevil.meizi.base.BaseActivity;
 import com.nevil.meizi.util.T;
 import com.nevil.meizi.view.BottomDialog;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
@@ -25,7 +23,7 @@ import butterknife.OnLongClick;
 /**
  * 加载显示大图
  */
-public class PictureShowActivity extends AppCompatActivity {
+public class PictureShowActivity extends BaseActivity {
 
     @BindView(R.id.picture_dialog_image)
     PhotoView mPictureDialogImage;
@@ -34,14 +32,11 @@ public class PictureShowActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle arg0) {
-        super.onCreate(arg0);
-        setContentView(R.layout.activity_picture);
-        ButterKnife.bind(this);
-        initView();
+    protected int setLayout() {
+        return R.layout.activity_picture;
     }
 
-    private void initView() {
+    protected void initView() {
         Intent intent = getIntent();
         String url = intent.getStringExtra("path");
         Glide.with(this).load(url).listener(new RequestListener<String, GlideDrawable>() {

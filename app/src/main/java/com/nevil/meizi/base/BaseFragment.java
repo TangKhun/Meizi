@@ -57,6 +57,7 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
-        mCompositeDisposable.clear();
+        if (mCompositeDisposable != null)
+            mCompositeDisposable.clear();
     }
 }

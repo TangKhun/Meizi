@@ -66,7 +66,12 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
 
     public void loadFail() {
         if (page == 1) {
-            mAdapter.setEmptyView(getEmptyView());
+            stopRefresh();
+            mAdapter.setEmptyView(R.layout.view_errview);
+            mAdapter.getEmptyView().setOnClickListener(v -> {
+                mSwipeRefreshLayout.setRefreshing(true);
+                onRefresh();
+            });
         } else {
             mAdapter.loadMoreFail();
         }
@@ -81,6 +86,5 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
         }
         page++;
     }
-
 
 }
