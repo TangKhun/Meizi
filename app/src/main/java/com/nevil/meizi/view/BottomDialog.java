@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nevil.meizi.R;
+import com.nevil.meizi.network.GlideImageManager;
 
 /**
  * Created by Tangkun on 2017/5/5.
@@ -16,17 +17,18 @@ import com.nevil.meizi.R;
 public class BottomDialog extends BottomSheetDialog implements View.OnClickListener {
     private TextView saveView, setWallpaperView, cancelView;
     private Context mContext;
+    private String mUrl;
 
-    public BottomDialog(@NonNull Context context) {
+    public BottomDialog(@NonNull Context context, String url) {
         super(context);
         mContext = context;
+        mUrl = url;
         View rootView = LayoutInflater.from(context).inflate(R.layout.dialog_bottom_image, null);
         saveView = (TextView) rootView.findViewById(R.id.dialog_save);
         setWallpaperView = (TextView) rootView.findViewById(R.id.dialog_wallpaper);
         cancelView = (TextView) rootView.findViewById(R.id.dialog_cancel);
         setContentView(rootView);
         registerListener();
-
     }
 
     private void registerListener() {
@@ -39,7 +41,8 @@ public class BottomDialog extends BottomSheetDialog implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.dialog_save:
-
+                GlideImageManager.downLoadImage(mContext, mUrl);
+                dismiss();
                 break;
             case R.id.dialog_wallpaper:
 

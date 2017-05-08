@@ -29,7 +29,7 @@ public class PictureShowActivity extends BaseActivity {
     PhotoView mPictureDialogImage;
     @BindView(R.id.picture_dialog_progress)
     ProgressBar mPictureDialogProgress;
-
+    String url;
 
     @Override
     protected int setLayout() {
@@ -38,7 +38,7 @@ public class PictureShowActivity extends BaseActivity {
 
     protected void initView() {
         Intent intent = getIntent();
-        String url = intent.getStringExtra("path");
+         url = intent.getStringExtra("path");
         Glide.with(this).load(url).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
@@ -64,7 +64,7 @@ public class PictureShowActivity extends BaseActivity {
 
     @OnLongClick(R.id.picture_dialog_image)
     boolean onLongClick(View v) {
-        new BottomDialog(this).show();
+        new BottomDialog(this,url).show();
         return true;
     }
 }

@@ -14,6 +14,8 @@ import com.nevil.meizi.base.BaseActivity;
 import com.nevil.meizi.bean.TNGouImageBean;
 import com.nevil.meizi.network.BaseUrl;
 import com.nevil.meizi.network.NetClient;
+import com.nevil.meizi.util.T;
+import com.nevil.meizi.view.BottomDialog;
 
 import butterknife.BindView;
 import io.reactivex.Observer;
@@ -31,6 +33,7 @@ public class GroupImageActivity extends BaseActivity implements BaseQuickAdapter
     RecyclerView mGroupImageRecycle;
 
     GroupImageAdapter mAdapter;
+    BottomDialog mDialog;
 
     @Override
     protected int setLayout() {
@@ -89,7 +92,11 @@ public class GroupImageActivity extends BaseActivity implements BaseQuickAdapter
 
     @Override
     public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, int i) {
-        Toast.makeText(this, "position=" + i, Toast.LENGTH_SHORT).show();
+        if (checkPermission()) {
+            new BottomDialog(this, BaseUrl.TNGOU_IMAGE_ROOT_URL + mAdapter.getData().get(i).getSrc()).show();
+        } else {
+            T.showShortToast(this, "无SD卡访问权限");
+        }
         return false;
     }
 }

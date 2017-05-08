@@ -1,6 +1,9 @@
 package com.nevil.meizi.network;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -9,8 +12,14 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.nevil.meizi.R;
+import com.nevil.meizi.util.T;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  * Created by Tangkun on 2017/5/6.
@@ -38,5 +47,19 @@ public class GlideImageManager {
         }).into(imageView);
     }
 
+    public static void downLoadImage(Context context, String url) {
+        Glide.with(context).load(url).downloadOnly(new SimpleTarget<File>() {
+            @Override
+            public void onResourceReady(File resource, GlideAnimation<? super File> glideAnimation) {
+                try {
+                    MediaStore.Images.Media.insertImage(context.getContentResolver(), resource.getPath(), "meizi", "description");
+                    context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(resource)));
+                    T.showShortToast(context, "保存成功");
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 }

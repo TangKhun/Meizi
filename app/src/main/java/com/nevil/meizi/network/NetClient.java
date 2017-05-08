@@ -20,7 +20,7 @@ public class NetClient {
     static NetInterface mInterface;
 
 
-    static Retrofit getRetrofit(String baseUrl) {
+    private static Retrofit getRetrofit(String baseUrl) {
         return new Retrofit.Builder().baseUrl(baseUrl).client(getClient()).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }

@@ -23,7 +23,7 @@ public class BaseUrl {
     public static final String TNGOU_IMAGE_LIST = "list";
     public static final String TNGOU_IMAGE_SHOW = "show";
 
-    public static final String TNGOU_IMAGE_ROOT_URL = "http://tnfs.tngou.net/img";
+    public static final String TNGOU_IMAGE_ROOT_URL = "http://tnfs.tngou.net/img/";
 
 
 
