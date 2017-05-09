@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nevil.meizi.R;
-import com.nevil.meizi.network.GlideImageManager;
+import com.nevil.meizi.util.FileUtil;
 
 /**
  * Created by Tangkun on 2017/5/5.
@@ -37,19 +37,24 @@ public class BottomDialog extends BottomSheetDialog implements View.OnClickListe
         cancelView.setOnClickListener(this);
     }
 
+    public void setNewData(String url) {
+        mUrl = url;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.dialog_save:
-                GlideImageManager.downLoadImage(mContext, mUrl);
-                dismiss();
+                //GlideImageManager.downLoadImage(mContext, mUrl);
+                FileUtil.downLoadImage(mContext, mUrl, false);
                 break;
             case R.id.dialog_wallpaper:
-
+                // GlideImageManager.setWallPaper(mContext, mUrl);
+                FileUtil.downLoadImage(mContext, mUrl, true);
                 break;
             case R.id.dialog_cancel:
-                this.dismiss();
                 break;
         }
+        dismiss();
     }
 }

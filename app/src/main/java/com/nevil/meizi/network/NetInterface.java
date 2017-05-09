@@ -5,9 +5,11 @@ import com.nevil.meizi.bean.TNGouBean;
 import com.nevil.meizi.bean.TNGouImageBean;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 /**
  * Created by Tangkun on 2017/5/4.
@@ -23,6 +25,7 @@ public interface NetInterface {
     @GET(BaseUrl.TNGOU_IMAGE_SHOW)
     Observable<TNGouImageBean> getTNGouImageShow(@Query("id") int id);
 
-
+    @GET
+    Observable<ResponseBody> downLoadImage(@Url String url);
 }
 

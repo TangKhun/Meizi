@@ -68,13 +68,14 @@ public class GroupImageActivity extends BaseActivity implements BaseQuickAdapter
 
             @Override
             public void onNext(TNGouImageBean bean) {
-                Log.e("MEIZI", "onNext: " + bean.toString());
+                //Log.e("MEIZI", "onNext: " + bean.toString());
                 mAdapter.setNewData(bean.getList());
             }
 
             @Override
             public void onError(Throwable throwable) {
-
+                T.showShortToast(GroupImageActivity.this, "加载失败");
+                finish();
             }
 
             @Override
@@ -93,7 +94,13 @@ public class GroupImageActivity extends BaseActivity implements BaseQuickAdapter
     @Override
     public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, int i) {
         if (checkPermission()) {
-            new BottomDialog(this, BaseUrl.TNGOU_IMAGE_ROOT_URL + mAdapter.getData().get(i).getSrc()).show();
+            if (mDialog == null) {
+                mDialog = new BottomDialog(this, BaseUrl.TNGOU_IMAGE_ROOT_URL + mAdapter.getData().get(i).getSrc());
+            } else {
+                mDialog.setNewData(BaseUrl.TNGOU_IMAGE_ROOT_URL + mAdapter.getData().get(i).getSrc());
+            }
+            mDialog.show();
+
         } else {
             T.showShortToast(this, "无SD卡访问权限");
         }

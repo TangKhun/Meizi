@@ -15,9 +15,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class NetClient {
-    static NetInterface mGankNetInterface;
-    static NetInterface mTNGouNetInterface;
-    static NetInterface mInterface;
 
 
     private static Retrofit getRetrofit(String baseUrl) {
@@ -28,20 +25,6 @@ public class NetClient {
     public static NetInterface getInterface(String baseUrl){
         return getRetrofit(baseUrl).create(NetInterface.class);
     }
-
-//    public static NetInterface getGankNetInterface() {
-//        if (mGankNetInterface == null) {
-//            mGankNetInterface = getRetrofit(UrlApi.GANK_ROOT_URL).create(NetInterface.class);
-//        }
-//        return mGankNetInterface;
-//    }
-//
-//    public static NetInterface getTNGouNetInterface() {
-//        if (mTNGouNetInterface == null) {
-//            mTNGouNetInterface = getRetrofit(UrlApi.TNGOU_ROOT_URL).create(NetInterface.class);
-//        }
-//        return mTNGouNetInterface;
-//    }
 
     private static OkHttpClient getClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
