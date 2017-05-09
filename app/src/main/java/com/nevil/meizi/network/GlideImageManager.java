@@ -19,6 +19,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.nevil.meizi.R;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,19 +33,20 @@ public class GlideImageManager {
         Glide.with(context).load(url).placeholder(R.drawable.glide_empty).error(R.drawable.glide_err).into(imageView);
     }
 
-    public static void loadImageNeedRequst(Context context, String url, ImageView imageView, ProgressBar progressBar) {
+    public static void loadImageNeedRequst(Context context, String url, ImageView imageView, AVLoadingIndicatorView progressBar) {
+        progressBar.show();
         Glide.with(context).load(url).error(R.drawable.glide_err).diskCacheStrategy(DiskCacheStrategy.ALL).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(context, "图片加载失败", Toast.LENGTH_SHORT).show();
+                progressBar.hide();
+                //Toast.makeText(context, "图片加载失败", Toast.LENGTH_SHORT).show();
                 return false;
             }
 
             @Override
             public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                 Log.e("MEIZI", "onResourceReady: " + "isFromMemoryCache=" + isFromMemoryCache + ",isFirstResource=" + isFirstResource);
-                progressBar.setVisibility(View.GONE);
+                progressBar.hide();
                 return false;
             }
         }).into(imageView);

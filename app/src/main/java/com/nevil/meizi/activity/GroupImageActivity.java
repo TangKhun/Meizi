@@ -16,6 +16,7 @@ import com.nevil.meizi.network.BaseUrl;
 import com.nevil.meizi.network.NetClient;
 import com.nevil.meizi.util.T;
 import com.nevil.meizi.view.BottomDialog;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import butterknife.BindView;
 import io.reactivex.Observer;
@@ -31,6 +32,8 @@ public class GroupImageActivity extends BaseActivity implements BaseQuickAdapter
 
     @BindView(R.id.group_image)
     RecyclerView mGroupImageRecycle;
+    @BindView(R.id.activity_group_process)
+    AVLoadingIndicatorView loadingIndicatorView;
 
     GroupImageAdapter mAdapter;
     BottomDialog mDialog;
@@ -74,13 +77,14 @@ public class GroupImageActivity extends BaseActivity implements BaseQuickAdapter
 
             @Override
             public void onError(Throwable throwable) {
+
                 T.showShortToast(GroupImageActivity.this, "加载失败");
                 finish();
             }
 
             @Override
             public void onComplete() {
-
+                loadingIndicatorView.hide();
             }
         });
     }

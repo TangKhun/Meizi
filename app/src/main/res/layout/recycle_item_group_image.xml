@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/group_image_view"
@@ -11,9 +12,11 @@
         android:adjustViewBounds="true">
     </com.github.chrisbanes.photoview.PhotoView>
 
-    <ProgressBar
+    <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/group_image_process"
         android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        app:indicatorName="LineScaleIndicator"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
@@ -21,9 +24,11 @@
         android:id="@+id/group_image_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="16dp"
         android:textColor="@color/white"
         android:textSize="10sp"
         tools:ignore="SmallSp"/>
-</FrameLayout>
+</RelativeLayout>

@@ -53,6 +53,7 @@ public class BottomDialog extends BottomSheetDialog implements View.OnClickListe
                 FileUtil.downLoadImage(mContext, mUrl, true);
                 break;
             case R.id.dialog_cancel:
+                this.dismiss();
                 break;
         }
         dismiss();

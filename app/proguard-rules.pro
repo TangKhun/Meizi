@@ -26,3 +26,5 @@
 -keep class com.chad.library.adapter.** {
    *;
 }
+-keep class com.wang.avi.** { *; }
+-keep class com.wang.avi.indicators.** { *; }
