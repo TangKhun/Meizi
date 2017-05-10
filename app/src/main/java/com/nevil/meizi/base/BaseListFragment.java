@@ -1,9 +1,7 @@
 package com.nevil.meizi.base;
 
-import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.nevil.meizi.R;
@@ -91,7 +89,11 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
         page++;
     }
 
-    public void setPage(int page){
+    public void scrollTop() {
+        mBaseListFragmentRecycler.smoothScrollToPosition(0);
+    }
+
+    public void setPage(int page) {
         this.page = page;
     }
 

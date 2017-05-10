@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meizi</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">settings</string>
+    <string name="err_fail">load fail</string>
+    <string name="err_refresh">refresh</string>
+    <string name="save_local">Save image</string>
+    <string name="set_wallpaper">Set wallpaper</string>
+    <string name="cancel">cancel</string>
+    <string name="cancel_app">cancel app</string>
+    <string name="tngou">TNGou</string>
+    <string name="clean_cache">Clean cache</string>
+    <string name="setting">setting</string>
+    <string name="beauty_portrait">Beauty portrait</string>
+    <string name="beauty_photos">Beauty photos</string>
+    <string name="pure_beauty">Pure beauty</string>
+    <string name="sexy_models">Sexy models</string>
+    <string name="silk_stockings">Silk stockings</string>
+    <string name="japanese_beauty">Japanese beauty</string>
+    <string name="sexy_beauty">Sexy beauty</string>
+</resources>

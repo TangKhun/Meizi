@@ -29,11 +29,11 @@ public class TNGouAdapter extends BaseQuickAdapter<TNGouDataBean, BaseViewHolder
     @Override
     protected void convert(BaseViewHolder holder, TNGouDataBean bean) {
         GlideImageManager.loadImage(mContext ,BaseUrl.TNGOU_IMAGE_ROOT_URL + bean.getImg(), holder.getView(R.id.recycle_image));
-        //GlideImageManager.loadImageNeedRequst(mContext,BaseUrl.TNGOU_ROOT_URL+bean.getImg(),holder.getView(R.id.recycle_image),holder.getView(R.id.recycle_process));
         holder.setOnClickListener(R.id.recycle_image, v -> {
             Intent intent = new Intent(mContext, GroupImageActivity.class);
-            // intent.putExtra("path", BaseUrl.TNGOU_IMAGE_ROOT_URL + bean.getImg());
             intent.putExtra("ID", bean.getId());
+//            ActivityOptionsCompat options = ActivityOptionsCompat
+//                    .makeSceneTransitionAnimation(activity, transitionView, "image");
             mContext.startActivity(intent);
         });
     }

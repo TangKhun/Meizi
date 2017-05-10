@@ -51,7 +51,8 @@ public class TNGouFragment extends BaseListFragment {
         });
     }
 
-    public void changeClassId(int classId){
+    public void changeClassId(int classId) {
+        scrollTop();
         this.classId = classId;
         setPage(1);
         loadData(1);

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nevil.meizi.R;
+import com.nevil.meizi.network.GlideImageManager;
 import com.nevil.meizi.util.FileUtil;
 
 /**
@@ -49,8 +50,8 @@ public class BottomDialog extends BottomSheetDialog implements View.OnClickListe
                 FileUtil.downLoadImage(mContext, mUrl, false);
                 break;
             case R.id.dialog_wallpaper:
-                // GlideImageManager.setWallPaper(mContext, mUrl);
-                FileUtil.downLoadImage(mContext, mUrl, true);
+                GlideImageManager.setWallPaper(mContext, mUrl);
+                //FileUtil.downLoadImage(mContext, mUrl, true);
                 break;
             case R.id.dialog_cancel:
                 this.dismiss();

@@ -1,21 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Meizi</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="app_name">妹子</string>
+    <string name="navigation_drawer_open">打开侧滑菜单</string>
+    <string name="navigation_drawer_close">关闭侧滑菜单</string>
     <string name="action_settings">设置</string>
     <string name="err_fail">加载失败\n\n点击空白处刷新</string>
     <string name="err_refresh">刷新</string>
-
-    <string name="title_activity_image" translatable="false">ImageActivity</string>
-    <string name="dummy_button" translatable="false">Dummy Button</string>
-    <string name="dummy_content" translatable="false">DUMMY\nCONTENT</string>
     <string name="save_local">保存原图</string>
     <string name="set_wallpaper">设置壁纸</string>
     <string name="cancel">取消</string>
     <string name="cancel_app">退出软件</string>
-    <string name="gank" translatable="false">Gank.io</string>
     <string name="tngou">天狗</string>
     <string name="clean_cache">清除缓存</string>
     <string name="setting">设置</string>
@@ -26,7 +20,4 @@
     <string name="silk_stockings">丝袜美腿</string>
     <string name="japanese_beauty">日韩美女</string>
     <string name="sexy_beauty">性感美女</string>
-    <string name="title_activity_settings">Settings</string>
-
-
 </resources>

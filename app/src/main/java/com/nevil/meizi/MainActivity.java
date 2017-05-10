@@ -3,12 +3,9 @@ package com.nevil.meizi;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,12 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.nevil.meizi.adapter.MainFragmentPageAdapter;
-import com.nevil.meizi.fragment.GankMeiziFragment;
 import com.nevil.meizi.fragment.TNGouFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +35,7 @@ public class MainActivity extends AppCompatActivity
     private long exitTime;
 
     FragmentManager manager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +48,13 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         mNavView.setNavigationItemSelectedListener(this);
-        Log.e("MEIZI", "onCreate: " );
+        Log.e("MEIZI", "onCreate: ");
         initFragment();
     }
 
     private void initFragment() {
         manager = getSupportFragmentManager();
-        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame,new TNGouFragment(),"TNGou").commit();
+        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new TNGouFragment(), "TNGou").commit();
         manager.executePendingTransactions();
     }
 
@@ -72,7 +65,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Snackbar.make(mDrawerLayout, "再按一次退出程序", Snackbar.LENGTH_LONG)
+                Snackbar.make(mDrawerLayout, "再按一次退出程序", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
                 exitTime = System.currentTimeMillis();
             } else {
@@ -91,6 +84,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -129,19 +123,16 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void setClassId(int classId){
-        try{TNGouFragment fragment = (TNGouFragment) manager.findFragmentByTag("TNGou");
-            if (fragment!=null){
+    public void setClassId(int classId) {
+        try {
+            TNGouFragment fragment = (TNGouFragment) manager.findFragmentByTag("TNGou");
+            if (fragment != null) {
                 fragment.changeClassId(classId);
-            }}catch (Exception e){
-            Log.e("MEIZI", "setClassId: "+e.getMessage() );
+            }
+        } catch (Exception e) {
+            Log.e("MEIZI", "setClassId: " + e.getMessage());
         }
     }
 
-//    @OnClick(R.id.fab)
-//    public void onViewClicked() {
-//        Snackbar.make(mViewPager, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show();
-//    }
 
 }
