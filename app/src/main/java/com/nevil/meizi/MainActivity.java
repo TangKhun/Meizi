@@ -1,5 +1,7 @@
 package com.nevil.meizi;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -15,10 +17,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.bumptech.glide.Glide;
 import com.nevil.meizi.fragment.TNGouFragment;
+import com.nevil.meizi.util.T;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import io.reactivex.Observable;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,12 +47,14 @@ public class MainActivity extends AppCompatActivity
     private long exitTime;
 
     FragmentManager manager;
+    CompositeDisposable mCompositeDisposable;
+    protected Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -83,9 +97,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-
+        if (id == R.id.action_clean) {
+            cleanCache();
             return true;
+        } else if (id == R.id.action_github) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/TangKhun/Meizi")));
+            return true;
+        } else if (id == R.id.action_about) {
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -134,5 +153,56 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    public void cleanCache() {
+        Log.e("MEZI", "cleanCache: ");
+        Observable.create((ObservableOnSubscribe<Boolean>) emitter -> {
+            try {
+                Glide.get(MainActivity.this).clearDiskCache();
+                Log.e("MEZI", "clearDiskCache: ");
+                emitter.onNext(true);
+            } catch (Exception e) {
+                emitter.onError(e);
+            }
 
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Boolean>() {
+            @Override
+            public void onSubscribe(Disposable disposable) {
+                addDisposable(disposable);
+            }
+
+            @Override
+            public void onNext(Boolean aBoolean) {
+                Log.e("MEZI", "onNext: " + aBoolean);
+                if (aBoolean)
+                    T.showShortToast(MainActivity.this, "清理完成");
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                Log.e("MEZI", "onError: " + throwable.getMessage());
+                T.showShortToast(MainActivity.this, "清理失败");
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+
+    }
+
+    public void addDisposable(Disposable disposable) {
+        if (mCompositeDisposable == null)
+            mCompositeDisposable = new CompositeDisposable();
+        if (disposable != null)
+            mCompositeDisposable.add(disposable);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mCompositeDisposable != null)
+            mCompositeDisposable.clear();
+        unbinder.unbind();
+    }
 }

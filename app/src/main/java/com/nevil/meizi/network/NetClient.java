@@ -28,8 +28,11 @@ public class NetClient {
 
     private static OkHttpClient getClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        if (BuildConfig.DEBUG)
-            builder.addInterceptor(new HttpLoggingInterceptor());
+        if (BuildConfig.DEBUG){
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            builder.addInterceptor(interceptor);
+        }
         builder.connectTimeout(10, TimeUnit.SECONDS).writeTimeout(10, TimeUnit.SECONDS).readTimeout(300, TimeUnit.SECONDS);
         return builder.build();
     }
