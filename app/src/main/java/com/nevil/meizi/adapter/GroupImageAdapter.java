@@ -25,7 +25,7 @@ public class GroupImageAdapter extends BaseQuickAdapter<TNGouImageDataBean, Base
 
     @Override
     protected void convert(BaseViewHolder holder, TNGouImageDataBean bean) {
-        GlideImageManager.loadImageNeedRequst(mContext, BaseUrl.TNGOU_IMAGE_ROOT_URL + bean.getSrc(), holder.getView(R.id.group_image_view), holder.getView(R.id.group_image_process));
+        GlideImageManager.loadImageNeedRequest(mContext, BaseUrl.TNGOU_IMAGE_ROOT_URL + bean.getSrc(), holder.getView(R.id.group_image_view), holder.getView(R.id.group_image_process));
         holder.setText(R.id.group_image_text, (holder.getAdapterPosition() + 1) + "/" + getItemCount()).addOnClickListener(R.id.group_image_view).addOnLongClickListener(R.id.group_image_view);
     }
 

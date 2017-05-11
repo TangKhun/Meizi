@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.bumptech.glide.Glide;
+import com.nevil.meizi.fragment.GankMeiziFragment;
 import com.nevil.meizi.fragment.TNGouFragment;
 import com.nevil.meizi.util.T;
 
@@ -62,13 +63,13 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         mNavView.setNavigationItemSelectedListener(this);
-        Log.e("MEIZI", "onCreate: ");
         initFragment();
     }
 
     private void initFragment() {
         manager = getSupportFragmentManager();
-        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new TNGouFragment(), "TNGou").commit();
+        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankMeiziFragment(), "Gank").commit();
+        //manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new TNGouFragment(), "TNGou").commit();
         manager.executePendingTransactions();
     }
 
@@ -115,6 +116,9 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id) {
+            case R.id.nav_gank_fuli:
+                setGankFragment();
+                break;
             case R.id.nav_sexy_beauty:
                 setClassId(1);
                 break;
@@ -142,11 +146,23 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void setGankFragment() {
+        GankMeiziFragment fragment = (GankMeiziFragment) manager.findFragmentByTag("Gank");
+        if (fragment == null)
+            fragment = new GankMeiziFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment, "Gank").commitAllowingStateLoss();
+
+    }
+
     public void setClassId(int classId) {
         try {
             TNGouFragment fragment = (TNGouFragment) manager.findFragmentByTag("TNGou");
             if (fragment != null) {
                 fragment.changeClassId(classId);
+            } else {
+                TNGouFragment tnGouFragment = new TNGouFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, tnGouFragment, "TNGou").commitAllowingStateLoss();
+                tnGouFragment.changeClassId(classId);
             }
         } catch (Exception e) {
             Log.e("MEIZI", "setClassId: " + e.getMessage());

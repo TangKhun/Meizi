@@ -27,5 +27,8 @@ public interface NetInterface {
 
     @GET
     Observable<ResponseBody> downLoadImage(@Url String url);
+
+    @GET("{className}/20/{page}")
+    Observable<GankBean> getGank(@Path("className") String className, @Path("page") int page);
 }
 

@@ -18,7 +18,7 @@ public class BaseUrl {
      */
 
     public static final String GANK_ROOT_URL = "http://gank.io/api/data/";
-    public static final String GankFuli = "福利/10/";
+    public static final String GankFuli = "福利/20/";
     public static final String TNGOU_ROOT_URL = "http://www.tngou.net/tnfs/api/";
     public static final String TNGOU_IMAGE_LIST = "list";
     public static final String TNGOU_IMAGE_SHOW = "show";

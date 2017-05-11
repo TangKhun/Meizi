@@ -29,9 +29,9 @@ public class GlideImageManager {
         Glide.with(context).load(url).placeholder(R.drawable.empty_image).error(R.drawable.empty_image_err).into(imageView);
     }
 
-    public static void loadImageNeedRequst(Context context, String url, ImageView imageView, AVLoadingIndicatorView progressBar) {
-        progressBar.show();
-        Glide.with(context).load(url).error(R.drawable.empty_image_err).diskCacheStrategy(DiskCacheStrategy.ALL).listener(new RequestListener<String, GlideDrawable>() {
+    public static void loadImageNeedRequest(Context context, String url, ImageView imageView, AVLoadingIndicatorView progressBar) {
+        //progressBar.show();
+        Glide.with(context).load(url).error(R.drawable.empty_image_err).diskCacheStrategy(DiskCacheStrategy.SOURCE).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
                 progressBar.hide();
@@ -46,6 +46,7 @@ public class GlideImageManager {
                 return false;
             }
         }).into(imageView);
+
     }
 
     public static void setWallPaper(Context context, String url) {
@@ -69,7 +70,7 @@ public class GlideImageManager {
         Glide.with(context).load(url).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                T.showShortToast(context,"");
+                T.showShortToast(context, "");
                 Intent intent = new Intent(Intent.ACTION_ATTACH_DATA);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.putExtra("mimeType", "image/*");

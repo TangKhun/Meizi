@@ -16,7 +16,7 @@
     <string name="cancel">取消</string>
     <string name="cancel_app">退出软件</string>
     <string name="gank" translatable="false">Gank.io</string>
-    <string name="tngou">天狗</string>
+    <string name="tngou">TNGou</string>
     <string name="clean_cache">清除缓存</string>
     <string name="setting">设置</string>
     <string name="beauty_portrait">美女写真</string>
@@ -30,5 +30,11 @@
     <string name="github">访问Github</string>
     <string name="about">关于</string>
 
-
+    <string name="fuli">Gank福利</string>
+    <string name="Android">Android</string>
+    <string name="iOS">iOS</string>
+    <string name="rest_video">休息视频</string>
+    <string name="expand_resources">拓展资源</string>
+    <string name="web_design">前端</string>
+    <string name="all">all</string>
 </resources>

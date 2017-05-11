@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_gank_fuli"
             android:checked="true"
+            android:title="@string/fuli"/>
+        <item
             android:id="@+id/nav_sexy_beauty"
-            android:title="@string/sexy_beauty" />
+            android:title="@string/sexy_beauty"/>
         <item
             android:id="@+id/nav_japanese_beauty"
-
-            android:title="@string/japanese_beauty" />
+            android:title="@string/japanese_beauty"/>
         <item
             android:id="@+id/nav_silk_stockings"
 
-            android:title="@string/silk_stockings" />
+            android:title="@string/silk_stockings"/>
         <item
             android:id="@+id/nav_beauty_photos"
 
-            android:title="@string/beauty_photos" />
+            android:title="@string/beauty_photos"/>
         <item
             android:id="@+id/nav_beauty_portrait"
 
-            android:title="@string/beauty_portrait" />
+            android:title="@string/beauty_portrait"/>
         <item
             android:id="@+id/nav_pure_beauty"
 
-            android:title="@string/pure_beauty" />
+            android:title="@string/pure_beauty"/>
         <item
             android:id="@+id/nav_sexy_models"
 
-            android:title="@string/sexy_models" />
+            android:title="@string/sexy_models"/>
+
     </group>
 
+
     <!--<item android:title="@string/setting">-->
-        <!--<menu>-->
-            <!--<item-->
-                <!--android:id="@+id/nav_clean"-->
-                <!--android:icon="@drawable/ic_menu_share"-->
-                <!--android:title="@string/clean_cache" />-->
-            <!--<item-->
-                <!--android:id="@+id/nav_cancel"-->
-                <!--android:icon="@drawable/ic_menu_send"-->
-                <!--android:title="@string/cancel_app" />-->
-        <!--</menu>-->
+    <!--<menu>-->
+    <!--<item-->
+    <!--android:id="@+id/nav_clean"-->
+    <!--android:icon="@drawable/ic_menu_share"-->
+    <!--android:title="@string/clean_cache" />-->
+    <!--<item-->
+    <!--android:id="@+id/nav_cancel"-->
+    <!--android:icon="@drawable/ic_menu_send"-->
+    <!--android:title="@string/cancel_app" />-->
+    <!--</menu>-->
     <!--</item>-->
 
 </menu>
