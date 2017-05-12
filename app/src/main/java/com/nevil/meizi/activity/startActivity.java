@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.nevil.meizi.MainActivity;
-
 /**
  * Created by Nevil on 2017-05-06.
  */

@@ -1,4 +1,4 @@
-package com.nevil.meizi;
+package com.nevil.meizi.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -17,25 +17,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.bumptech.glide.Glide;
+import com.nevil.meizi.R;
 import com.nevil.meizi.fragment.GankMeiziFragment;
 import com.nevil.meizi.fragment.TNGouFragment;
-import com.nevil.meizi.util.T;
+import com.nevil.meizi.util.FileUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import io.reactivex.Observable;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -45,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+
     private long exitTime;
 
     FragmentManager manager;
@@ -69,7 +64,6 @@ public class MainActivity extends AppCompatActivity
     private void initFragment() {
         manager = getSupportFragmentManager();
         manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankMeiziFragment(), "Gank").commit();
-        //manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new TNGouFragment(), "TNGou").commit();
         manager.executePendingTransactions();
     }
 
@@ -99,7 +93,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_clean) {
-            cleanCache();
+            FileUtil.cleanCache(this);
             return true;
         } else if (id == R.id.action_github) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/TangKhun/Meizi")));
@@ -169,55 +163,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void cleanCache() {
-        Log.e("MEZI", "cleanCache: ");
-        Observable.create((ObservableOnSubscribe<Boolean>) emitter -> {
-            try {
-                Glide.get(MainActivity.this).clearDiskCache();
-                Log.e("MEZI", "clearDiskCache: ");
-                emitter.onNext(true);
-            } catch (Exception e) {
-                emitter.onError(e);
-            }
-
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Boolean>() {
-            @Override
-            public void onSubscribe(Disposable disposable) {
-                addDisposable(disposable);
-            }
-
-            @Override
-            public void onNext(Boolean aBoolean) {
-                Log.e("MEZI", "onNext: " + aBoolean);
-                if (aBoolean)
-                    T.showShortToast(MainActivity.this, "清理完成");
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                Log.e("MEZI", "onError: " + throwable.getMessage());
-                T.showShortToast(MainActivity.this, "清理失败");
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-
-    }
 
     public void addDisposable(Disposable disposable) {
         if (mCompositeDisposable == null)
             mCompositeDisposable = new CompositeDisposable();
         if (disposable != null)
             mCompositeDisposable.add(disposable);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.e("MEIZI", "onActivityResult: " + requestCode + resultCode);
     }
 
     @Override
