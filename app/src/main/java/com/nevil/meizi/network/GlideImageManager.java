@@ -26,7 +26,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 public class GlideImageManager {
     public static void loadImage(Context context, String url, ImageView imageView) {
-        Glide.with(context).load(url).placeholder(R.drawable.empty_image).error(R.drawable.empty_image_err).into(imageView);
+        Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.empty_image).error(R.drawable.empty_image_err).into(imageView);
     }
 
     public static void loadImageNeedRequest(Context context, String url, ImageView imageView, AVLoadingIndicatorView progressBar) {

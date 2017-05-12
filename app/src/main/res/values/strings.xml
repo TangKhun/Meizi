@@ -7,6 +7,8 @@
     <string name="action_settings">设置</string>
     <string name="err_fail">加载失败\n\n点击空白处刷新</string>
     <string name="err_refresh">刷新</string>
+    <string name="transition_name">image</string>
+
 
     <string name="title_activity_image" translatable="false">ImageActivity</string>
     <string name="dummy_button" translatable="false">Dummy Button</string>

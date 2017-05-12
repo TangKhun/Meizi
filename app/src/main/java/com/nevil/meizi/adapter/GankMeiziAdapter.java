@@ -39,12 +39,11 @@ public class GankMeiziAdapter extends BaseQuickAdapter<GankDataBean, BaseViewHol
             intent.putExtra("path", gankDataBean.getUrl());
             if (Build.VERSION.SDK_INT >= 21) {
                 ImageView imageView = holder.getView(R.id.recycle_image);
-                imageView.setTransitionName("image");
+                imageView.setTransitionName(mContext.getString(R.string.transition_name));
                 ActivityOptions options = ActivityOptions
                         .makeSceneTransitionAnimation((Activity) mContext, imageView, "image");
-                mContext.startActivity(intent, options.toBundle());
-            }else {
-
+                ((Activity) mContext).startActivityForResult(intent, 1000, options.toBundle());
+            } else {
                 mContext.startActivity(intent);
             }
         });

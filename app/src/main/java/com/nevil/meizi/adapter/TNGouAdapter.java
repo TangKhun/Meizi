@@ -1,8 +1,12 @@
 package com.nevil.meizi.adapter;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -28,13 +32,20 @@ public class TNGouAdapter extends BaseQuickAdapter<TNGouDataBean, BaseViewHolder
 
     @Override
     protected void convert(BaseViewHolder holder, TNGouDataBean bean) {
-        GlideImageManager.loadImage(mContext ,BaseUrl.TNGOU_IMAGE_ROOT_URL + bean.getImg(), holder.getView(R.id.recycle_image));
+        GlideImageManager.loadImage(mContext, BaseUrl.TNGOU_IMAGE_ROOT_URL + bean.getImg(), holder.getView(R.id.recycle_image));
         holder.setOnClickListener(R.id.recycle_image, v -> {
             Intent intent = new Intent(mContext, GroupImageActivity.class);
             intent.putExtra("ID", bean.getId());
-//            ActivityOptionsCompat options = ActivityOptionsCompat
-//                    .makeSceneTransitionAnimation(activity, transitionView, "image");
-            mContext.startActivity(intent);
+            if (Build.VERSION.SDK_INT >= 21) {
+                ImageView imageView = holder.getView(R.id.recycle_image);
+                imageView.setTransitionName(mContext.getString(R.string.transition_name));
+                ActivityOptions options = ActivityOptions
+                        .makeSceneTransitionAnimation((Activity) mContext, imageView, "image");
+                ((Activity) mContext).startActivityForResult(intent, 1000, options.toBundle());
+            } else {
+                mContext.startActivity(intent);
+            }
+
         });
     }
 }

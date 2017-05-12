@@ -215,10 +215,18 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("MEIZI", "onActivityResult: " + requestCode + resultCode);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mCompositeDisposable != null)
             mCompositeDisposable.clear();
         unbinder.unbind();
     }
+
+
 }

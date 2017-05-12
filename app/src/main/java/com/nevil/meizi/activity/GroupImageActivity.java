@@ -1,5 +1,6 @@
 package com.nevil.meizi.activity;
 
+import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
@@ -92,7 +93,11 @@ public class GroupImageActivity extends BaseActivity implements BaseQuickAdapter
 
     @Override
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int i) {
-        finish();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAfterTransition();
+        }else {
+            finish();
+        }
     }
 
     @Override

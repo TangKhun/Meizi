@@ -2,6 +2,7 @@ package com.nevil.meizi.activity;
 
 
 import android.content.Intent;
+import android.os.Build;
 import android.view.View;
 
 import com.github.chrisbanes.photoview.PhotoView;
@@ -40,7 +41,11 @@ public class PictureShowActivity extends BaseActivity {
 
     @OnClick(R.id.picture_dialog_image)
     public void onViewClicked() {
-        finish();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAfterTransition();
+        }else {
+            finish();
+        }
     }
 
     @OnLongClick(R.id.picture_dialog_image)

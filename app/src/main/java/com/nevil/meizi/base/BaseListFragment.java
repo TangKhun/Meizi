@@ -36,7 +36,7 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
         mBaseListFragmentRecycler.setAdapter(mAdapter);
         mBaseListFragmentRecycler.setLayoutManager(setLayoutManager());
         mAdapter.setOnLoadMoreListener(this, mBaseListFragmentRecycler);
-        mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
     }
 
     protected abstract void loadData(int page);
