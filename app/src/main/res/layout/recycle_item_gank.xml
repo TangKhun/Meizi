@@ -1,39 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dp">
-
-    <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/item_gank_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginRight="5dp"
-        app:srcCompat="@mipmap/ic_launcher"/>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="5dp">
 
     <TextView
         android:id="@+id/item_gank_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/item_gank_image"
-        android:text="@string/app_name"/>
+        android:layout_marginBottom="@dimen/dp_10"
+        android:drawableLeft="@mipmap/title"
+        android:maxLines="1"
+        android:text="@string/app_name"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/item_gank_class"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/item_gank_image"
-        android:layout_toRightOf="@+id/item_gank_image"
-        android:text="分类"/>
 
-    <TextView
-        android:id="@+id/item_gank_time"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/item_gank_image"
+        android:layout_width="100dp"
+        android:transitionName="@string/transition_name"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/item_gank_image"
-        android:layout_alignParentRight="true"
-        android:text="2011/12/1"/>
-</RelativeLayout>
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/item_gank_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/item_gank_class"
+            android:drawableLeft="@mipmap/author"
+            android:gravity="center"
+            android:text="Nevil"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/item_gank_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/tag"
+            android:text="Android"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/item_gank_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@mipmap/time"
+            android:text="2011/12/1"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

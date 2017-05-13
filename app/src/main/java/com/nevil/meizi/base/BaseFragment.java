@@ -31,7 +31,6 @@ public abstract class BaseFragment extends Fragment {
             unbinder = ButterKnife.bind(this, view);
             isPrepared = true;
             initView();
-
         }
         return view;
     }

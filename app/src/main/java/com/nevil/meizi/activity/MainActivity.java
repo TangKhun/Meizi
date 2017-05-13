@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.nevil.meizi.R;
+import com.nevil.meizi.fragment.GankFragment;
 import com.nevil.meizi.fragment.GankMeiziFragment;
 import com.nevil.meizi.fragment.TNGouFragment;
 import com.nevil.meizi.util.FileUtil;
@@ -63,7 +64,8 @@ public class MainActivity extends AppCompatActivity
 
     private void initFragment() {
         manager = getSupportFragmentManager();
-        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankMeiziFragment(), "Gank").commit();
+        //manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankMeiziFragment(), "Gank").commit();
+        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankFragment(), "Gank").commit();
         manager.executePendingTransactions();
     }
 

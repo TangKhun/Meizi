@@ -14,8 +14,23 @@ public class GankDataBean {
     String url;
     String used;
     String who;
+    String[] images;
+
 
     public GankDataBean() {
+    }
+
+    public GankDataBean(String _id, String createdAt, String desc, String publishedAt, String source, String type, String url, String used, String who, String[] images) {
+        this._id = _id;
+        this.createdAt = createdAt;
+        this.desc = desc;
+        this.publishedAt = publishedAt;
+        this.source = source;
+        this.type = type;
+        this.url = url;
+        this.used = used;
+        this.who = who;
+        this.images = images;
     }
 
     public GankDataBean(String _id, String createdAt, String desc, String publishedAt, String source, String type, String url, String used, String who) {
@@ -28,6 +43,15 @@ public class GankDataBean {
         this.url = url;
         this.used = used;
         this.who = who;
+    }
+
+    public String[] getImages() {
+        return images;
+    }
+
+    public GankDataBean setImages(String[] images) {
+        this.images = images;
+        return this;
     }
 
     public String get_id() {

@@ -15,20 +15,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class NetClient {
-
-
     private static Retrofit getRetrofit(String baseUrl) {
         return new Retrofit.Builder().baseUrl(baseUrl).client(getClient()).addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
-    public static NetInterface getInterface(String baseUrl){
+    public static NetInterface getInterface(String baseUrl) {
         return getRetrofit(baseUrl).create(NetInterface.class);
     }
 
     private static OkHttpClient getClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addInterceptor(interceptor);

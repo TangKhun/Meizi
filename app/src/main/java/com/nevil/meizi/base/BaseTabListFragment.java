@@ -2,6 +2,7 @@ package com.nevil.meizi.base;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -28,18 +29,20 @@ public abstract class BaseTabListFragment extends BaseFragment implements SwipeR
 
     @Override
     protected void initView() {
-        mBaseTabTab.setTabMode(TabLayout.MODE_FIXED);
+        //mBaseTabTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         mBaseTabTab.addOnTabSelectedListener(this);
         mBaseTabSwipe.setOnRefreshListener(this);
         int[] title = getTabString();
         for (int id : title) {
-            mBaseTabTab.addTab(mBaseTabTab.newTab().setCustomView(id));
+            mBaseTabTab.addTab(mBaseTabTab.newTab().setText(id));
         }
         mAdapter = setAdapter();
         mBaseTabRecycle.setAdapter(mAdapter);
         mBaseTabRecycle.setLayoutManager(setLayoutManager());
+        mBaseTabRecycle.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         mAdapter.setOnLoadMoreListener(this, mBaseTabRecycle);
         mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        loadData(1, 0);
     }
 
     @Override
@@ -49,9 +52,6 @@ public abstract class BaseTabListFragment extends BaseFragment implements SwipeR
 
     //获取TabLayout上应显示的标题
     public abstract int[] getTabString();
-
-    //tab选择改变
-    public abstract void tabChange();
 
     protected abstract void loadData(int page, int tab);
 
@@ -63,7 +63,6 @@ public abstract class BaseTabListFragment extends BaseFragment implements SwipeR
     @Override
     public void onRefresh() {
         page = 1;
-        tabChange();
     }
 
     public void stopRefresh() {
@@ -73,6 +72,8 @@ public abstract class BaseTabListFragment extends BaseFragment implements SwipeR
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
+        scrollTop();
+        mBaseTabSwipe.setRefreshing(true);
         page = 1;
         loadData(page, tab.getPosition());
     }

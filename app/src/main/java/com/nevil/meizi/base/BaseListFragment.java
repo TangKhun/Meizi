@@ -26,10 +26,7 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
 
     @Override
     protected void initView() {
-        //mSwipeRefreshLayout.measure(0,0);
         mSwipeRefreshLayout.setRefreshing(true);
-//        classId = getArguments().getInt("classId");
-//        Log.e("MEIZI", "initView: " + classId);
         loadData(1);
         mAdapter = setAdapter();
         mSwipeRefreshLayout.setOnRefreshListener(this);
@@ -97,4 +94,9 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
         this.page = page;
     }
 
+    @Override
+    public void onDestroy() {
+        stopRefresh();
+        super.onDestroy();
+    }
 }
