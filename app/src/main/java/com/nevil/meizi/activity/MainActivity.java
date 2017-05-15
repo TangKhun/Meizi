@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
     private void initFragment() {
         manager = getSupportFragmentManager();
         //manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankMeiziFragment(), "Gank").commit();
-        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankFragment(), "Gank").commit();
+        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankFragment(), "gank.io").commit();
         manager.executePendingTransactions();
     }
 
@@ -112,8 +112,10 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id) {
-            case R.id.nav_gank_fuli:
+            case R.id.nav_gank:
                 setGankFragment();
+            case R.id.nav_gank_fuli:
+                setGankFuliFragment();
                 break;
             case R.id.nav_sexy_beauty:
                 setClassId(1);
@@ -143,10 +145,18 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void setGankFragment() {
-        GankMeiziFragment fragment = (GankMeiziFragment) manager.findFragmentByTag("Gank");
+        GankFragment fragment = (GankFragment) manager.findFragmentByTag("gank.io");
+        if (fragment == null) {
+            fragment = new GankFragment();
+        }
+        manager.beginTransaction().replace(R.id.main_frame, fragment, "gank.io").commitAllowingStateLoss();
+    }
+
+    public void setGankFuliFragment() {
+        GankMeiziFragment fragment = (GankMeiziFragment) manager.findFragmentByTag("Gank.fuli");
         if (fragment == null)
             fragment = new GankMeiziFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment, "Gank").commitAllowingStateLoss();
+        manager.beginTransaction().replace(R.id.main_frame, fragment, "Gank.fuli").commitAllowingStateLoss();
 
     }
 
@@ -157,7 +167,7 @@ public class MainActivity extends AppCompatActivity
                 fragment.changeClassId(classId);
             } else {
                 TNGouFragment tnGouFragment = new TNGouFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, tnGouFragment, "TNGou").commitAllowingStateLoss();
+                manager.beginTransaction().replace(R.id.main_frame, tnGouFragment, "TNGou").commitAllowingStateLoss();
                 tnGouFragment.changeClassId(classId);
             }
         } catch (Exception e) {
