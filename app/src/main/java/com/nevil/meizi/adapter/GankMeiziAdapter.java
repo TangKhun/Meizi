@@ -46,6 +46,7 @@ public class GankMeiziAdapter extends BaseQuickAdapter<GankDataBean, BaseViewHol
             } else {
                 mContext.startActivity(intent);
             }
+           // mContext.startActivity(intent);
         });
     }
 

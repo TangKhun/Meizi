@@ -31,6 +31,11 @@ public class GankFragment extends BaseTabListFragment implements BaseQuickAdapte
     GankAdapter mAdapter;
 
     @Override
+    protected boolean isNeedDivider() {
+        return true;
+    }
+
+    @Override
     public int[] getTabString() {
         return tabTitle;
     }

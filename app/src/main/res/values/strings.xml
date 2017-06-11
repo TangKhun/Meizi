@@ -21,13 +21,13 @@
     <string name="tngou">TNGou</string>
     <string name="clean_cache">清除缓存</string>
     <string name="setting">设置</string>
-    <string name="beauty_portrait">美女写真</string>
-    <string name="beauty_photos">美女照片</string>
-    <string name="pure_beauty">清纯美女</string>
-    <string name="sexy_models">性感车模</string>
-    <string name="silk_stockings">丝袜美腿</string>
-    <string name="japanese_beauty">日韩美女</string>
-    <string name="sexy_beauty">性感美女</string>
+    <string name="beauty_portrait">写真</string>
+    <string name="beauty_photos">照片</string>
+    <string name="pure_beauty">清纯</string>
+    <string name="sexy_models">车模</string>
+    <string name="silk_stockings">美腿</string>
+    <string name="japanese_beauty">日韩</string>
+    <string name="sexy_beauty">性感</string>
     <string name="title_activity_settings">Settings</string>
     <string name="github">访问Github</string>
     <string name="about">关于</string>
@@ -40,4 +40,9 @@
     <string name="web_design">前端</string>
     <string name="all">all</string>
     <string name="title_activity_web">WebActivity</string>
+
+    <string name="title_home">干货集中营</string>
+    <string name="title_dashboard">妹子</string>
+    <string name="title_notifications">福利</string>
+    <string name="All">全部</string>
 </resources>

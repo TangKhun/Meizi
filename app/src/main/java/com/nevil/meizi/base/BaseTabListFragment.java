@@ -29,7 +29,7 @@ public abstract class BaseTabListFragment extends BaseFragment implements SwipeR
 
     @Override
     protected void initView() {
-        //mBaseTabTab.setTabMode(TabLayout.MODE_SCROLLABLE);
+        mBaseTabTab.setTabMode(TabLayout.GRAVITY_CENTER);
         mBaseTabTab.addOnTabSelectedListener(this);
         mBaseTabSwipe.setOnRefreshListener(this);
         int[] title = getTabString();
@@ -39,11 +39,16 @@ public abstract class BaseTabListFragment extends BaseFragment implements SwipeR
         mAdapter = setAdapter();
         mBaseTabRecycle.setAdapter(mAdapter);
         mBaseTabRecycle.setLayoutManager(setLayoutManager());
-        mBaseTabRecycle.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        if (isNeedDivider()){
+            mBaseTabRecycle.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        }
+
         mAdapter.setOnLoadMoreListener(this, mBaseTabRecycle);
         mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         loadData(1, 0);
     }
+
+    protected abstract boolean isNeedDivider();
 
     @Override
     protected int setLayout() {

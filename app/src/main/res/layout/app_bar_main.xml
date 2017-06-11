@@ -16,16 +16,22 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_marginTop="25dp"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
-
+        <!--android:layout_marginTop="25dp"-->
     </android.support.design.widget.AppBarLayout>
 
 
     <include layout="@layout/content_main"/>
-
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:layout_behavior="com.nevil.meizi.view.BottomNavigationViewBehavior"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/navigation" />
     <!--<android.support.design.widget.FloatingActionButton-->
     <!--android:id="@+id/fab"-->
     <!--android:layout_width="wrap_content"-->

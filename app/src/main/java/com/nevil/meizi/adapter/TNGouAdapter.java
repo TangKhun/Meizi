@@ -8,6 +8,8 @@ import android.os.Build;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.nevil.meizi.R;
@@ -45,7 +47,6 @@ public class TNGouAdapter extends BaseQuickAdapter<TNGouDataBean, BaseViewHolder
             } else {
                 mContext.startActivity(intent);
             }
-
         });
     }
 }

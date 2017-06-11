@@ -46,6 +46,7 @@ public class PictureShowActivity extends BaseActivity {
         }else {
             finish();
         }
+        //finish();
     }
 
     @OnLongClick(R.id.picture_dialog_image)

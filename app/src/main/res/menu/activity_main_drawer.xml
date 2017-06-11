@@ -7,36 +7,7 @@
             android:id="@+id/nav_gank"
             android:checked="true"
             android:title="@string/gank"/>
-        <item
-            android:id="@+id/nav_gank_fuli"
 
-            android:title="@string/fuli"/>
-        <item
-            android:id="@+id/nav_sexy_beauty"
-            android:title="@string/sexy_beauty"/>
-        <item
-            android:id="@+id/nav_japanese_beauty"
-            android:title="@string/japanese_beauty"/>
-        <item
-            android:id="@+id/nav_silk_stockings"
-
-            android:title="@string/silk_stockings"/>
-        <item
-            android:id="@+id/nav_beauty_photos"
-
-            android:title="@string/beauty_photos"/>
-        <item
-            android:id="@+id/nav_beauty_portrait"
-
-            android:title="@string/beauty_portrait"/>
-        <item
-            android:id="@+id/nav_pure_beauty"
-
-            android:title="@string/pure_beauty"/>
-        <item
-            android:id="@+id/nav_sexy_models"
-
-            android:title="@string/sexy_models"/>
 
     </group>
 

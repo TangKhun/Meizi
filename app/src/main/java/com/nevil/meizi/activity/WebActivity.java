@@ -4,6 +4,7 @@ import android.net.http.SslError;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
@@ -41,6 +42,12 @@ public class WebActivity extends BaseActivity {
         mToolbar.setTitle(getIntent().getStringExtra("TITLE"));
         Log.e("MEIZI", "initView: " + url);
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mToolbar.setNavigationOnClickListener(v -> {
+            Log.e("MEIZI", "initView: --------");
+            WebActivity.this.finish();
+        });
+
         mWeb.loadUrl(url);
         mWeb.setWebViewClient(new WebViewClient() {
             @Override

@@ -14,7 +14,15 @@
         android:id="@+id/activity_group_process"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_gravity="center"
         app:indicatorName="LineScaleIndicator" />
+    <TextView
+        android:id="@+id/activity_group_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="1/1"
+        />
 </FrameLayout>
