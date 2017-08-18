@@ -3,13 +3,11 @@ package com.nevil.meizi.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -19,13 +17,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.nevil.meizi.R;
 import com.nevil.meizi.adapter.MainFragmentPageAdapter;
 import com.nevil.meizi.fragment.GankFragment;
 import com.nevil.meizi.fragment.GankMeiziFragment;
-import com.nevil.meizi.fragment.TNGouFragment;
 import com.nevil.meizi.fragment.TNGouTabFragment;
 import com.nevil.meizi.util.FileUtil;
 
@@ -71,10 +67,10 @@ public class MainActivity extends AppCompatActivity
                 mViewPage.setCurrentItem(1);
                 Log.e("MEIZI", "onNavigationItemSelected: navigation_dashboard");
                 return true;
-            case R.id.navigation_notifications:
-                mViewPage.setCurrentItem(2);
-                Log.e("MEIZI", "onNavigationItemSelected: navigation_notifications");
-                return true;
+//            case R.id.navigation_notifications:
+//                mViewPage.setCurrentItem(2);
+//                Log.e("MEIZI", "onNavigationItemSelected: navigation_notifications");
+//                return true;
         }
         return false;
     };
@@ -98,15 +94,11 @@ public class MainActivity extends AppCompatActivity
 
 
     private void initFragment() {
-//        manager = getSupportFragmentManager();
-//        //manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankMeiziFragment(), "Gank").commit();
-//        manager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_UNSET).add(R.id.main_frame, new GankFragment(), "gank.io").commit();
-//        manager.executePendingTransactions();
         String[] fragmentString = {"干货", "福利", "美女"};
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new GankFragment());
         fragmentList.add(new GankMeiziFragment());
-        fragmentList.add(new TNGouTabFragment());
+       // fragmentList.add(new TNGouTabFragment());
 
         //fragmentList.add(new TNGouFragment());
         mainFragmentPageAdapter = new MainFragmentPageAdapter(getSupportFragmentManager(), fragmentList, fragmentString);
@@ -257,4 +249,5 @@ public class MainActivity extends AppCompatActivity
     public void onPageScrollStateChanged(int state) {
 
     }
+
 }
