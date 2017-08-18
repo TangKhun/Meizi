@@ -40,11 +40,11 @@ public class WebActivity extends BaseActivity {
 
         url = getIntent().getStringExtra("url");
         mToolbar.setTitle(getIntent().getStringExtra("TITLE"));
-        Log.e("MEIZI", "initView: " + url);
+      //  Log.e("MEIZI", "initView: " + url);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(v -> {
-            Log.e("MEIZI", "initView: --------");
+           // Log.e("MEIZI", "initView: --------");
             WebActivity.this.finish();
         });
 
