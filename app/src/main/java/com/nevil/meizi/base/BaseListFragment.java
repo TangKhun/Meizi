@@ -2,6 +2,7 @@ package com.nevil.meizi.base;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.nevil.meizi.R;
@@ -41,6 +42,8 @@ public abstract class BaseListFragment extends BaseFragment implements SwipeRefr
     protected abstract RecyclerView.LayoutManager setLayoutManager();
 
     protected abstract BaseQuickAdapter setAdapter();
+
+    //protected abstract void itemClick(BaseQuickAdapter adapter, View view, int position);
 
     @Override
     protected int setLayout() {

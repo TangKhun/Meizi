@@ -17,6 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:transitionName="url"
             app:navigationIcon="@drawable/ic_arrow_back_24dp"
             app:layout_scrollFlags="scroll|enterAlways"
             android:background="?attr/colorPrimary"

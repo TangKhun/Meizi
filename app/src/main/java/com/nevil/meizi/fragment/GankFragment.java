@@ -88,21 +88,27 @@ public class GankFragment extends BaseTabListFragment implements BaseQuickAdapte
     public void onItemChildClick(BaseQuickAdapter adapter, View view, int i) {
         Intent intent = new Intent(getContext(), PictureShowActivity.class);
         intent.putExtra("path", mAdapter.getItem(i).getImages()[0]);
-        if (Build.VERSION.SDK_INT >= 21) {
-            view.setTransitionName(getString(R.string.transition_name));
-            ActivityOptions options = ActivityOptions
-                    .makeSceneTransitionAnimation(getActivity(), view, "image");
-            getActivity().startActivityForResult(intent, 1000, options.toBundle());
-        } else {
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            view.setTransitionName(getString(R.string.transition_name));
+//            ActivityOptions options = ActivityOptions
+//                    .makeSceneTransitionAnimation(getActivity(), view, "image");
+//            getActivity().startActivityForResult(intent, 1000, options.toBundle());
+//        } else {
             startActivity(intent);
-        }
+        //}
     }
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int i) {
+
         Intent intent = new Intent(getContext(), WebActivity.class);
         intent.putExtra("url", mAdapter.getItem(i).getUrl());
         intent.putExtra("TITLE", mAdapter.getItem(i).getDesc());
-        startActivity(intent);
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            ActivityOptions options = ActivityOptions
+//                    .makeSceneTransitionAnimation(getActivity(), view, "url");
+//            startActivity(intent, options.toBundle());
+//        } else
+            startActivity(intent);
     }
 }

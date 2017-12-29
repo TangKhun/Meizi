@@ -1,9 +1,17 @@
 package com.nevil.meizi.fragment;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.nevil.meizi.R;
+import com.nevil.meizi.activity.PictureShowActivity;
 import com.nevil.meizi.adapter.GankMeiziAdapter;
 import com.nevil.meizi.base.BaseListFragment;
 import com.nevil.meizi.bean.GankBean;
@@ -31,7 +39,6 @@ public class GankMeiziFragment extends BaseListFragment {
             @Override
             public void onNext(GankBean entity) {
                 if (entity.getError().equals("false")) {
-
                     setData(entity.getResults());
                 } else {
                     loadFail();
@@ -59,5 +66,6 @@ public class GankMeiziFragment extends BaseListFragment {
     protected BaseQuickAdapter setAdapter() {
         return new GankMeiziAdapter(getContext(), null);
     }
+
 
 }

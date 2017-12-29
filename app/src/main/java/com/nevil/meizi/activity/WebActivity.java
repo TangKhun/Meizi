@@ -103,6 +103,11 @@ public class WebActivity extends BaseActivity {
             intent.setData(Uri.parse(url));
             startActivity(intent);
             return true;
+        } else if (id == R.id.action_share) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, url);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
